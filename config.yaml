@@ -3,7 +3,7 @@ languageCode: en-us
 defaultContentLanguage: en
 title: Julio's Blog
 theme: cupper-hugo-theme
-disqusShortname: disqus_07bzDWZ4e1
+disqusShortname: jvblog-1
 enableGitInfo: false
 
 taxonomies:
