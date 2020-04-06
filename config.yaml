@@ -3,7 +3,6 @@ languageCode: en-us
 defaultContentLanguage: en
 title: Julio's Blog
 theme: cupper-hugo-theme
-disqusShortname: jvblog-1
 enableGitInfo: false
 
 taxonomies:
@@ -22,6 +21,11 @@ params:
   # For more date formats see https://gohugo.io/functions/format/
   dateFormat: 2 Jan 2006
   katex: true
+  staticman: 
+    api: https://staticman-jvblog.herokuapp.com/v2/entry/juliov/blog_comments/master/comments
+    recaptcha:
+      sitekey: 6Lc2XOcUAAAAAPMduV4T0DJ8BpypWlL6AwArBeFj
+      secret: KX2xsa2yqQ5ioH2Ka8Y0Z5lI1HMTGSqU/oH6AD6+k3uofHDuB0k+ccFaxjXe/TetakmvJflrSbWQ8gFNO0sk3Mfs1g2RSZYn4WXMSULVLK+2Swho0YNq1qZ8+SarZq4EF5exK6br3k18BEru4oBv7Y9g8J2kX7HGNf+h/nDINiShEjTvYlHMAalR9n3UFJBDrYYvo4PU14ceRf9gf27xj+b74LfiG2MQINUG8GFXPlxCMV19ec2Iex4tAm6+rzvkmYdU7gJ+bH/daTWSN5D3KsD2uWSbJ7VoSAprGKa0rE8DHQY5+ptAWhzresBXGklnAG9eL6yjQ+fXKZC57haFTw==
 
 menu:
   nav:
