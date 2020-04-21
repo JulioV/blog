@@ -20,4 +20,15 @@ As an extra bit of information useful for our collaborators, I wanted to know th
 wc $(find . -name 'p*_fitbit_mvpa_episodes.csv') | awk '{if (($1 > 1) && ($4 ~ /^\.\/data/)) { print $1}}' | awk '{ total += $1; count++ } END { print total/count }' 
 ```
 
+If you want to export a list of all files with more than one line along their line count to a CSV file, you can execute:
+
+```bash
+wc $(find . -name 'p*_fitbit_mvpa_episodes.csv') | awk '{if (($1 > 1) && ($4 ~ /^\.\/data/)) { print }}'| sort | awk '{ {print $1","$4}}'> participants_with_episodes.csv
+```
+
+If you want to zip all files with more than one line, you can execute:
+
+```bash
+wc $(find . -name 'p*_fitbit_mvpa_episodes.csv') | awk '{if (($1 > 1) && ($4 ~ /^\.\/data/)) { print }}'| sort | awk '{ {print $4}}'| zip participants_with_episodes.zip -@
+```
 We have an average of 17.3 episodes across 20 people. 
