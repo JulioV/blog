@@ -4,6 +4,8 @@ tags: ["web", "productivity", "hugo"]
 title: "Configuring Staticman Comments with Hugo"
 ---
 
+UPDATE: Fix broken links to staticman's partial, CSS and JS files.
+
 I wanted to add comments to my blog, and Disqus seemed like a good option as the [theme](https://github.com/zwbetz-gh/cupper-hugo-theme) I'm using supports it out of the box. However, as things stand, I am happy with a solution that doesn't require storing people's data in third party databases and doesn't add [ads and unnecessary tracking scripts](https://replyable.com/2017/03/disqus-is-your-data-worth-trading-for-convenience/) that could make the reading experience slower or cluttered.
 
 After searching for open-source/ethical comment suppliers, I found out about [Staticman](https://staticman.net/), and I am giving it a try since it integrates with Hugo blogs, it uses a git repository to store and triage comments, it's been around since 2015, and has good documentation. I just had to work around some constraints. In essence, you need to deploy your own instance of Staticman to Heroku as the official Staticman API hits its quota frequently (Heroku's free tier is enough tho'), I wanted to keep this blog's comments on a separate repository, and I am using Staticman API V2 since everything is hosted on GitHub (V3 supports other providers like Gitlab). 
@@ -28,15 +30,15 @@ And the instructions:
 7. Add the following three Config vars to your Heroku instance in `https://dashboard.heroku.com/apps/YOUR_INSTANCE_NAME/settings`:
     ```yaml
     NODE_ENV production
-    GITHUB_TOKEN YOUR PERSONAL ACCESS TOKEN
-    RSA_PRIVATE_KEY CONTENT OF key.pem
+    GITHUB_TOKEN "YOUR PERSONAL ACCESS TOKEN"
+    RSA_PRIVATE_KEY "CONTENT OF key.pem"
     ```
 8. If you want to use reCaptcha to avoid spam, do the following:
  1. Register your blog [here](https://www.google.com/recaptcha/admin). You can add `localhost` to the domain list to be able to test everything in your local machine. Save your `siteKey` and `secret`
  2. Encrypt your reCaptcha `secret` obtained before by querying your Heroku instance in this URL: `https://YOUR_HEROKU_APP_NAME.herokuapp.com/v2/encrypt/YOUR_UNENCRYPTED_RECAPTCHA_SECRET`
-9. Add [this partial](https://github.com/JulioV/blog/blob/205b5b4f0408ca2748b093ad3a7c98c11ace37d2/layouts/partials/staticman.html#L1) to your blog and call `{{ partial "staticman.html" . }}` where you want to load your comments.
-10. Add the CSS styles from this [line onwards](https://github.com/JulioV/blog/blob/9e23be1e2cd987af170fba3a60876254bce465df/assets/css/template-styles.css#L1045) to your blog.
-11. Add this [JS script](https://github.com/JulioV/blog/blob/9e23be1e2cd987af170fba3a60876254bce465df/layouts/partials/staticman-js-common.js) to your **partials**
+9. Add [this partial](https://gist.github.com/JulioV/c1386fde8920406f3871666bf059d1a3) to your blog and call `{{ partial "staticman.html" . }}` where you want to load your comments.
+10. Add these [CSS rules](https://gist.github.com/JulioV/5e0297961e4425054ec94c44c880fc70) to your blog.
+11. Add this [JS script](https://gist.github.com/JulioV/8f3bfd3113764fc9c66726a12d651820) to your **partials**
 12. Add the following lines to the `params` list in your Hugo blog's `config.yaml`
     ```yaml
     staticman: 
@@ -93,7 +95,7 @@ And the instructions:
      6. Add a `HTTP action` in Integromat. Connect this to the `Custom Webhook trigger`
      7. In the connection between the `HTTP action` and the `Custom Webhook trigger`, add two conditions joined by an `AND` operator: `action` = `closed` and `pul_request: merged` = `true`. They should be autocompleted if Integromat was able to infer the PR's content
      8. Click in the `HTTP action`, add the Netlify hook's URL you got earlier to the action's `URL` field, and change its `Method` to `POST`
-     1.  Turn the scenario ON using the switch at the bottom left and set `Schedule setting` to `Immediatly`
-     9.  From now on, the scenario should trigger a Netlify build every time you accept a Staticman's Pull Request
+     9.  Turn the scenario ON using the switch at the bottom left and set `Schedule setting` to `Immediatly`
+     10. From now on, the scenario should trigger a Netlify build every time you accept a Staticman's Pull Request
 
 Feel free to leave a comment if you have issues or questions!
