@@ -26,7 +26,7 @@ And the instructions:
 3. Create a Personal Access Token in `account2` at [https://github.com/settings/tokens](https://github.com/settings/tokens). Save it because you can only see it once, and you will need it in a bit.
 4. Invite `account2` as a collaborator to `blog_comments` going to `https://github.com/YOUR_MAIN_GITHUB_ACCOUNT/blog_comments/settings/access`
 5. Deploy Staticman to Heroku using the purple button in the project's [README](https://github.com/eduardoboucas/staticman) (make sure it's in the master branch)
-6. Create a private key for Staticman (you can do this in your Heroku instance going to "More" -> "Run console"): `openssl genrsa -out key.pem`
+6. Create a private key for Staticman (you can do this in your Heroku instance going to "More" -> "Run console"): `openssl genrsa –out key.pem; cat key.pem`
 7. Add the following three Config vars to your Heroku instance in `https://dashboard.heroku.com/apps/YOUR_INSTANCE_NAME/settings`:
     ```yaml
     NODE_ENV production
