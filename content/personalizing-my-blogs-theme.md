@@ -4,6 +4,8 @@ tags: ["web", "hugo"]
 title: "Polishing my blog's appearance and performance"
 ---
 
+UPDATE. I made more small changes as detailed [here](../quick-blog-style-update/)
+
 When I was setting up this blog with Hugo and Netlify, I found five themes that I liked for their simplicity and aesthetics. I chose [Cupper](https://cupper-hugo-theme.netlify.com/) because it focuses on content, is accessible, posts are grouped by tags and not categories, it supports multiple shortcodes (like notes, warnings, code, among others), it includes minimal javascript, and it provides a dark theme.
 
 - https://cupper-hugo-theme.netlify.com/ (the one I went for)

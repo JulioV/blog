@@ -4,6 +4,23 @@
     src: url('{{ "css/fonts/miriamlibre-bold.woff2" | absURL }}') format('woff2'), url('{{ "css/fonts/miriamlibre-bold.woff" | absURL }}') format('woff');
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wotfard';
+    src: url('{{ "css/fonts/wotfard-regular-webfont.woff2" | absURL }}') format('woff2');
+    font-weight: regular;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FiraCode';
+    src: url('{{ "css/fonts/FiraCode-Regular.woff2" | absURL }}') format('woff2');
+    font-weight: regular;
+    font-style: normal;
+    font-display: swap;
 }
 *,
 *::before,
@@ -16,9 +33,9 @@
     box-sizing: border-box;
 }
 html {
-    font-size: calc(1em + 0.33vw);
-    font-family: Arial, Helvetica Neue, sans-serif;
-    line-height: 1.8;
+    font-size: calc(1em + 0.23vw);
+    font-family: 'Wotfard', Helvetica Neue, sans-serif;
+    line-height: 2.0;
     color: #111;
     background-color: #fefefe;
 }
@@ -41,14 +58,14 @@ body,
     margin-top: 0;
 }
 p + p {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 .priority {
   margin-top: 0;
 }
-a {
-    text-decoration: none;
-    border-bottom: 1px solid;
+
+main#main  a {
+    color: #3f7fa6;
 }
 abbr {
     text-decoration: none;
@@ -115,7 +132,7 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: Miriam Libre, serif;
+    font-family: Wotfard, serif;
     line-height: 1.125;
     letter-spacing: 2px;
 }
@@ -153,8 +170,8 @@ pre,
     border: 1px solid;
 }
 code {
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 0.75em;
+    font-family:  FiraCode, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
     background-color: #eee;
     border-radius: 3px;
     padding: 0 3px;
@@ -222,6 +239,7 @@ button {
     color: #fefefe;
     padding: 0.75rem;
     border: 0;
+    cursor: pointer;
 }
 [data-launch] {
   font-size: 0.66rem !important;
@@ -321,7 +339,7 @@ caption {
     overflow-x: hidden;
 }
 .intro-and-nav {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     width: 15rem;
     height: 100vh;
     position: fixed;
@@ -456,8 +474,7 @@ caption {
 
 /* Pattern lists */
 .patterns-list {
-    list-style: none;
-    margin-left: 0;
+    list-style-type: square;
 }
 .patterns-list h2 {
     font-size: 1.25rem;
@@ -466,7 +483,6 @@ caption {
 .patterns-list li + li {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 2px solid;
 }
 .patterns-list a {
     border: 0;
@@ -1043,6 +1059,27 @@ h1 svg {
 }
 
 /* Styles for staticman fields*/
+.staticman-comment-reply {
+    padding: 1rem 1rem 1rem 2rem;
+    background-color: #ececec;
+    position: relative;
+}
+.arrow-up {
+    background-color: white;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #ececec;
+    position: absolute;
+    top: -20px;
+}
+.comment-button{
+    grid-column: 1/3;
+    grid-row: 3;
+    margin-top: 1rem;
+    text-align: right;
+}
 .staticman-comments {
     margin-bottom: 2rem;
 }
